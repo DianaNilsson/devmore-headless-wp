@@ -1,7 +1,7 @@
 <template>
   <main class="text-center">
     <b-breadcrumb :items="items" />
-    <h1 class="mb-5">{{ page.title.rendered }}</h1>
+    <h1 class="mb-5" v-if="page">{{ page.title.rendered }}</h1>
     <b-form
       class="form text-left"
       data-netlify="true"
@@ -46,7 +46,7 @@
         Skicka
       </b-button>
     </b-form>
-    <div class="page-content" v-html="page.content.rendered" />
+    <div class="page-content" v-html="page.content.rendered" v-if="page" />
   </main>
 </template>
 
