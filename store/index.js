@@ -13,12 +13,20 @@ export const mutations = {
 
   // Update to number later
   updateMenuItems: (state, menuItems) => {
-    state.menuItems = menuItems.map(({ id, menu_order, object_id, title }) => ({
-      id,
-      menu_order,
-      object_id,
-      title,
-    }));
+    state.menuItems = menuItems
+      .map(({ id, menu_order, object_id, title }) => ({
+        id,
+        menu_order,
+        object_id,
+        title,
+      }))
+      .sort((a, b) =>
+        Number(a.menu_order) > Number(b.menu_order)
+          ? 1
+          : Number(b.menu_order) > Number(a.menu_order)
+          ? -1
+          : 0
+      );
   },
   updatePages: (state, pages) => {
     state.pages = pages
