@@ -10,6 +10,8 @@ export const mutations = {
   updateMedia: (state, media) => {
     state.media = media;
   },
+
+  // Update to number later
   updateMenuItems: (state, menuItems) => {
     state.menuItems = menuItems.map(({ id, menu_order, object_id, title }) => ({
       id,

@@ -8,7 +8,9 @@
         <b-navbar-nav class="ml-auto">
           <b-nav-item
             :key="item.id"
-            :to="`/${pages.find((el) => el.id === item.object_id).slug}`"
+            :to="`/${
+              pages.find((el) => el.id === Number(item.object_id)).slug
+            }`"
             v-for="item in menuItems"
           >
             {{ item.title }}
@@ -47,11 +49,6 @@ export default {
     pages() {
       return this.$store.state.pages;
     },
-  },
-  data() {
-    return {
-      menuItems: {},
-    };
   },
 };
 </script>
