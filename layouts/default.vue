@@ -7,8 +7,8 @@
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-item
-            :key="item.slug"
-            :to="`/${item.slug}`"
+            :key="item.id"
+            :to="`/${pages.find((el) => el.id === item.object_id).slug}`"
             v-for="item in menuItems"
           >
             {{ item.title }}
@@ -40,22 +40,18 @@
 
 <script>
 export default {
+  computed: {
+    menuItems() {
+      return this.$store.state.menuItems;
+    },
+    pages() {
+      return this.$store.state.pages;
+    },
+  },
   data() {
     return {
       menuItems: {},
     };
-  },
-  async fetch() {
-    this.menuItems = (
-      await this.$axios.$get("http://localhost/devmore/wp-json/wp/v2/pages")
-    )
-      .filter((item) => item.slug !== "start")
-      .map((item) => {
-        return {
-          slug: item.slug,
-          title: item.title.rendered,
-        };
-      });
   },
 };
 </script>
