@@ -3,6 +3,7 @@
     <b-breadcrumb :items="items" />
     <h1 class="mb-5" v-if="page">{{ page.title.rendered }}</h1>
     <b-form
+      action="/"
       class="form text-left"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
